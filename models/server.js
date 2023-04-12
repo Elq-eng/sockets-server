@@ -3,6 +3,7 @@ const http = require('http');
 const path = require('path');
 const socketsio = require('socket.io');
 const Sockets = require('./sockets')
+const cors = require('cors');
 
 class Server{
 
@@ -23,6 +24,8 @@ class Server{
 
   middleware(){
     this.app.use(express.static( path.resolve(__dirname, '../public')))
+
+    this.app.use( cors() )
   }
 
   configuracionSockets(){
